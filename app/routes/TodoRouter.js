@@ -30,4 +30,20 @@ router.post('/', async (req, res) => {
     }
 });
 
+router.put('/:postId', async (req, res) => {
+    await Todo.findByIdAndUpdate(req.params.postId, {
+        title: req.body.title,
+        completed: req.body.completed,
+        date: new Date()
+    },
+    function(err, todo) {
+        if (err) {
+            res.json({ message: err });
+        }
+        else {
+            res.json(todo);
+        }
+    });
+});
+
 module.exports = router

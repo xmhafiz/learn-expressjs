@@ -10,7 +10,8 @@ app.use(bodyParser.json());
 
 monggose.connect(process.env.DB_URL, { 
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 }).then(() => {
     console.log('connected to db');
 }).catch(err => {
