@@ -9,6 +9,11 @@ const TodoSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    lane: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Lane',
+        default: null,
+    },
     date: {
         type: Date,
         default: Date.now

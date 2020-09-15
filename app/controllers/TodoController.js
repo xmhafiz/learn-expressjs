@@ -4,11 +4,13 @@ exports.get = async (req, res) => {
     try {
         let todoId = req.params.todoId;
         if (todoId) {
-            const todos = await Todo.findById(todoId);
-            res.status(200).json(todos);
+            const todos = await Todo.findById(todoId)
+            .populate({ path: 'lane'});
+            res.json(todos);
         }
         else {
-            const todos = await Todo.find();
+            const todos = await Todo.find()
+            .populate({ path: 'lane'});
             res.json(todos);
         }
     } catch (error) {
@@ -18,7 +20,8 @@ exports.get = async (req, res) => {
 
 exports.create = async (req, res) => {
     const todo = new Todo({
-        title: req.body.title
+        title: req.body.title,
+        lane: req.body.laneId
     });
     try {
         const savedTodo = await todo.save();
