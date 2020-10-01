@@ -1,6 +1,6 @@
-const Lane = require('../models/Lane');
+import Lane from '../models/Lane';
 
-exports.get = async (req, res) => {
+export async function get(req, res) {
     try {
         let laneId = req.params.laneId;
         if (laneId) {
@@ -14,9 +14,9 @@ exports.get = async (req, res) => {
     } catch (error) {
         res.json({ message: error });
     }
-};
+}
 
-exports.create = async (req, res) => {
+export async function create(req, res) {
     const lane = new Lane({
         title: req.body.title
     });
@@ -26,4 +26,4 @@ exports.create = async (req, res) => {
     } catch (error) {
         res.json({ message: error });
     }
-};
+}

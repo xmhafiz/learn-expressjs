@@ -1,6 +1,6 @@
-const Todo = require('../models/Todo');
+import Todo from '../models/Todo';
 
-exports.get = async (req, res) => {
+export async function get(req, res) {
     try {
         let todoId = req.params.todoId;
         if (todoId) {
@@ -16,9 +16,9 @@ exports.get = async (req, res) => {
     } catch (error) {
         res.json({ message: error });
     }
-};
+}
 
-exports.create = async (req, res) => {
+export async function create(req, res) {
     const todo = new Todo({
         title: req.body.title,
         lane: req.body.laneId
@@ -29,9 +29,9 @@ exports.create = async (req, res) => {
     } catch (error) {
         res.json({ message: error });
     }
-};
+}
 
-exports.update = async (req, res) => {
+export async function update(req, res) {
     await Todo.findByIdAndUpdate(req.params.todoId, {
         title: req.body.title,
         completed: req.body.completed,
