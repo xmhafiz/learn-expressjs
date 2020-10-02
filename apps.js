@@ -1,22 +1,22 @@
-const express = require('express');
+import express from 'express';
 const app = express();
-const monggose = require('mongoose');
-const todoRouter = require('./app/routes/TodoRouter');
-const laneRouter = require('./app/routes/LaneRouter');
-const bodyParser = require('body-parser');
+import { connect } from 'mongoose';
+import todoRouter from './app/routes/TodoRouter';
+import laneRouter from './app/routes/LaneRouter';
+import { json } from 'body-parser';
 
-require('dotenv/config');
+import 'dotenv/config';
 
-app.use(bodyParser.json());
+app.use(json());
 
-monggose.connect(process.env.DB_URL, { 
+connect(process.env.DB_URL, { 
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
 }).then(() => {
     console.log('connected to db');
 }).catch(err => {
-    console.log(err);
+    // console.log(err);
 })
 
 app.get('/', (req, res) => {

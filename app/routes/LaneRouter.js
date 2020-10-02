@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const LaneController = require('../controllers/LaneController');
+import { Router } from 'express';
+const router = Router();
+import { get, create } from '../controllers/LaneController';
 
-router.get('/:laneId?', LaneController.get);
-router.post('/', LaneController.create);
+router.get('/:laneId?', get);
+router.post('/', create);
 
-module.exports = router
+export default router

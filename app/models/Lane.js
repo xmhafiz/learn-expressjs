@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const LaneSchema = mongoose.Schema({
+const LaneSchema = Schema({
     title: {
         type: String,
         required: true
@@ -11,4 +11,4 @@ const LaneSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Lane', LaneSchema);
+export default model('Lane', LaneSchema);

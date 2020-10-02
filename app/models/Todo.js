@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+import { Schema, model } from 'mongoose';
 
-const TodoSchema = mongoose.Schema({
+const TodoSchema = Schema({
     title: {
         type: String,
         required: true
@@ -10,7 +10,7 @@ const TodoSchema = mongoose.Schema({
         default: false,
     },
     lane: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'Lane',
         default: null,
     },
@@ -20,4 +20,4 @@ const TodoSchema = mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Todo', TodoSchema);
+export default model('Todo', TodoSchema);
